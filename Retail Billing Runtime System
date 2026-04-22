@@ -1,0 +1,33 @@
+def get_items(n):
+    items = []
+    for i in range(n):
+        name = input("Enter name: ")
+        quantity = int(input("Enter quantity: "))
+        price = int(input("Enter price: "))
+        items.append((name, quantity, price))
+    return items
+
+def sub_total(items):
+    return [q * p for (_, q, p) in items]
+
+n = int(input("Enter number of items: "))
+items = get_items(n)
+
+print(items)
+
+subs = sub_total(items)
+print("Sub totals:", subs)
+
+total = sum(subs)
+print("Total:", total)
+
+if total > 3000:
+    discount = total * 0.10
+    total -= discount
+    print("Total after discount:", total)
+
+gst = total * 0.05
+total += gst
+
+print("GST:", gst)
+print("Final Bill:", total)
